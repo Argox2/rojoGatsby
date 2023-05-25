@@ -1,13 +1,6 @@
 import * as React from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
-import {
-  container,
-  heading,
-  navLinks,
-  navLinksItem,
-  navLinkText,
-  siteTitle
-} from "./layout.module.css";
+import * as styles from "./layout.module.css";
 
 interface LayoutProps {
   pageTitle: string; 
@@ -30,24 +23,28 @@ const Layout: React.FC<LayoutProps> = ({ pageTitle, children }) => {
           title
         }
       }
-    }
+    } 
   `);
 
   return (
-    <div className={container}>
-      <header className={siteTitle}>{data.site.siteMetadata.title}</header>
-      <nav>
-        <ul className={navLinks}>
-          <li className={navLinksItem}><Link to="/" className={navLinkText}>Home</Link></li>
-          <li className={navLinksItem}><Link to="/blog" className={navLinkText}>Blog</Link></li>
-          <li className={navLinksItem}><Link to="/about" className={navLinkText}>About me</Link></li>
-        </ul>
-      </nav>
-      <main>
-        <h1 className={heading}>{pageTitle}</h1>
-        {children}
-      </main>
-    </div>
+    <section className={styles.navigation}>
+      <div className={styles.container}>
+        <div className={styles.navWrapper}>
+          <Link to="/" className={styles.siteTitle}>{data.site.siteMetadata.title}</Link>
+          <nav>
+            <ul className={styles.navLinks}>
+              <li className={styles.navLinksItem}><Link to="/blog" className={styles.navLinkText} activeClassName={styles.navLinkTextActive}>Blog</Link></li>
+              <li className={styles.navLinksItem}><Link to="/projects" className={styles.navLinkText} activeClassName={styles.navLinkTextActive}>Projects</Link></li>
+              <li className={styles.navLinksItem}><Link to="/about" className={styles.navLinkText} activeClassName={styles.navLinkTextActive}>About</Link></li>
+            </ul>
+          </nav>
+          <main>
+            <h1 className={styles.heading}>{pageTitle}</h1>
+            {children}
+          </main>
+        </div>
+      </div>
+    </section>
   ); 
 }
 

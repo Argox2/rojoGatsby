@@ -1,8 +1,54 @@
-.container {
-  margin: auto;
-  max-width: 500px;
-  font-family: sans-serif;
+:root {
+  --background-color: #181818;
+  --content-width: 1160px; 
+  --font-family-base: "Inter", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-family-monospace: Menlo, "IBM Plex Mono", monospace;
+  --font-family-heading: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --font-family-nav: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --theme-button-color: #f9f9f9;
+  --navbar-height-large: 80px;
+  --navbar-height-small: 60px;
+  --navbar-color: #bbb;
+  --navbar-color-hover: #fff; 
 }
+
+body {
+  background-color: var(--background-color);
+  margin: 0;
+  padding: 0;
+}
+
+.navigation {
+  border-bottom: none;
+  padding-top: 3rem;
+  position: static;
+}
+
+.container {
+  border-bottom: none;
+  margin: auto;
+  max-width: var(--content-width);
+  font-family: sans-serif;
+  padding: 0 1rem;
+}
+
+@media screen and (min-width: 700px) {
+  .navigation,
+  .navigation .container {
+    height: var(--navbar-height-large);
+  }
+}
+
+.navigation .container {
+  display: flex;
+  height: var(--navbar-height-small);
+  justify-content: space-between;
+}
+
+.nav-wrapper {
+
+}
+
 
 .heading {
   color: rebeccapurple;
@@ -19,12 +65,25 @@
 }
 
 .nav-link-text {
-  color: black;
+  color: var(--navbar-color);
+  text-decoration: none;
+  
+}
+
+.nav-link-text:hover, 
+.nav-link-text-active {
+  color: var(--navbar-color-hover);
+  text-decoration: underline;
 }
 
 .site-title {
-  font-size: 3rem;
-  color: gray;
+  align-items: center;
+  color: var(--theme-button-color);
+  font-family: var(--font-family-base);
+  font-size: 1.1rem;
   font-weight: 700;
-  margin: 3rem 0;
+  gap: 0.4rem;
+  line-height: 1;
+  margin: 0 0.5rem 0 0;
+  text-decoration: none;
 }
